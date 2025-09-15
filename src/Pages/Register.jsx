@@ -24,7 +24,7 @@ const Register = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:7378/api/auth/register",
+        `${import.meta.env.VITE_API_URL}/api/auth/register`,
         formData
       );
       setSuccess(res.data.message);
