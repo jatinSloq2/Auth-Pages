@@ -1,6 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import axiosInstance from "../utils/AxiosInstance";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -15,10 +15,9 @@ const Login = () => {
     setError("");
 
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/auth/login`,
-        formData,
-        { withCredentials: true }
+      const res = await axiosInstance.post(
+        `/api/auth/login`,
+        formData
       );
       window.location.href = res.data.redirectUrl;
     } catch (err) {

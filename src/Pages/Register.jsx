@@ -1,6 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import axiosInstance from "../utils/AxiosInstance";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +11,6 @@ const Register = () => {
   });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,12 +22,12 @@ const Register = () => {
     setSuccess("");
 
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/auth/register`,
+      const res = await axiosInstance.post(
+        `/api/auth/register`,
         formData
       );
       setSuccess(res.data.message);
-      setTimeout(() => navigate("/login"), 1500);
+      window.location.href = res.data.redirectUrl;
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong");
     }
