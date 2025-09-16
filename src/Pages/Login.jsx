@@ -16,7 +16,7 @@ const Login = () => {
 
     try {
       const res = await axiosInstance.post(
-        `/api/auth/login`,
+        `/auth/login`,
         formData
       );
       // window.location.href = res.data.redirectUrl;

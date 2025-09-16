@@ -23,7 +23,7 @@ const Register = () => {
 
     try {
       const res = await axiosInstance.post(
-        `/api/auth/register`,
+        `/auth/register`,
         formData
       );
       setSuccess(res.data.message);
