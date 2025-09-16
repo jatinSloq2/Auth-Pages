@@ -27,7 +27,7 @@ const Register = () => {
         formData
       );
       setSuccess(res.data.message);
-      window.location.href = res.data.redirectUrl;
+      // window.location.href = res.data.redirectUrl;
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong");
     }

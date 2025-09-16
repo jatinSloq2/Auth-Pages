@@ -19,7 +19,7 @@ const Login = () => {
         `/api/auth/login`,
         formData
       );
-      window.location.href = res.data.redirectUrl;
+      // window.location.href = res.data.redirectUrl;
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     }
